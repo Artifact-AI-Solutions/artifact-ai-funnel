@@ -109,14 +109,10 @@ a { color: var(--artifact-primary); }
 
 /* ---------- Brand mark ---------- */
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--artifact-brand-navy); }
-/* TODO: placeholder mark — swap for the real Artifact AI logo asset. */
+/* The logomark carries its own colour and padding — no chip behind it. */
 .mark {
-  width: 40px; height: 40px; border-radius: 10px; flex: none;
-  background: var(--gradient-primary); color: #fff;
-  font-family: var(--font-headline); font-weight: 900; font-size: 22px;
+  width: 40px; height: 40px; flex: none;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2), 0 6px 20px rgba(0, 100, 148, 0.25);
-  overflow: hidden;
 }
 .mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .word strong {
@@ -341,7 +337,7 @@ a { color: var(--artifact-primary); }
   /* The tagline doesn't fit beside a button at this width; the wordmark carries it. */
   .echo-nav .word em { display: none; }
   .echo-nav .word strong { font-size: 16px; }
-  .echo-nav .mark { width: 34px; height: 34px; border-radius: 9px; }
+  .echo-nav .mark { width: 34px; height: 34px; }
   .f-list summary { padding: 18px 20px; font-size: 0.94rem; }
   .f-list details p { margin: 0 20px 18px; }
   .f-cols { gap: 32px; }
