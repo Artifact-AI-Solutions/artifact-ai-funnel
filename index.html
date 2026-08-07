@@ -45,7 +45,7 @@
       <a class="btn btn-primary btn-lg js-book" href="#cta">Book your free strategy call</a>
       <a class="btn-link" href="#how-it-works">See how it works →</a>
     </div>
-    <p class="fine">20 minutes. No pitch-fest — we look at your call volume and tell you what Echo would catch.</p>
+    <p class="fine">30 minutes. No pitch-fest — we look at your call volume and tell you what Echo would catch.</p>
   </div>
 </header>
 
@@ -231,7 +231,7 @@
   <div class="container">
     <p class="eyebrow on-brand">Ready?</p>
     <h2>Let's find out what your phone is costing you.</h2>
-    <p class="subhead">Book a free 20-minute call. We'll look at your call volume, your after-hours coverage, and tell you plainly what Echo would catch — and what it wouldn't.</p>
+    <p class="subhead">Book a free 30-minute call. We'll look at your call volume, your after-hours coverage, and tell you plainly what Echo would catch — and what it wouldn't.</p>
     <div class="cta-row center">
       <a class="btn btn-primary btn-lg js-book" href="#cta">Book your free strategy call</a>
     </div>
@@ -272,6 +272,26 @@
     <div class="f-bar">&copy; <span id="year"></span> Artifact AI Solutions. All rights reserved.</div>
   </div>
 </footer>
+
+<!-- ================= BOOKING MODAL ================= -->
+<!-- The iframe src is set on first open, not here — no third-party request
+     until someone actually asks to book. -->
+<div class="booking-modal" id="booking-modal" hidden>
+  <div class="booking-backdrop" data-close-booking></div>
+  <div class="booking-dialog" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+    <div class="booking-head">
+      <p class="booking-eyebrow">Free · 30 minutes</p>
+      <h3 id="booking-title">Book your strategy call</h3>
+      <button type="button" class="booking-close" data-close-booking aria-label="Close booking">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="booking-body">
+      <p class="booking-status" id="booking-status">Loading the calendar…</p>
+      <iframe id="booking-frame" title="Booking calendar" allow="payment"></iframe>
+    </div>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>

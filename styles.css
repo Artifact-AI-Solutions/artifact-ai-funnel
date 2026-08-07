@@ -89,6 +89,9 @@ a { color: var(--artifact-primary); }
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
+/* Set while the booking modal is open so the page behind it can't scroll. */
+body.booking-open { position: fixed; left: 0; right: 0; width: 100%; }
+
 .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
 .section { padding: 88px 0; }
 .center { text-align: center; }
@@ -315,6 +318,52 @@ a { color: var(--artifact-primary); }
 .f-cols a:hover { color: var(--artifact-primary-container); text-decoration: underline; text-underline-offset: 4px; }
 .f-bar { padding: 20px 0; border-top: 1px solid rgba(190, 199, 209, 0.2); font-size: 13px; color: var(--fg-2); }
 
+/* ---------- Booking modal ---------- */
+.booking-modal { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.booking-modal[hidden] { display: none; }
+.booking-backdrop {
+  position: absolute; inset: 0; background: rgba(15, 26, 46, 0.55);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  animation: bookingFade 0.2s ease;
+}
+.booking-dialog {
+  position: relative; display: flex; flex-direction: column;
+  width: 100%; max-width: 940px; height: min(86vh, 820px);
+  background: var(--bg-surface); border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: 0 30px 90px rgba(15, 23, 42, 0.35);
+  animation: bookingRise 0.22s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.booking-head {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 22px; border-bottom: 1px solid var(--border-hair); flex: none;
+}
+.booking-eyebrow {
+  font-size: 0.66rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--artifact-primary); margin: 0;
+}
+.booking-head h3 { margin: 0; font-size: 1.05rem; }
+.booking-head h3 { flex: 1; }
+.booking-close {
+  flex: none; width: 38px; height: 38px; border-radius: var(--radius-pill);
+  border: 1px solid var(--border-soft); background: var(--artifact-surface-container-low);
+  color: var(--fg-2); cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.booking-close:hover { background: var(--artifact-surface-container); color: var(--fg-1); }
+.booking-close .material-symbols-outlined { font-size: 20px; }
+.booking-body { position: relative; flex: 1; min-height: 0; }
+.booking-body iframe { width: 100%; height: 100%; border: none; display: block; position: relative; z-index: 1; }
+/* Sits behind the iframe — the widget paints over it once it loads. */
+.booking-status {
+  position: absolute; inset: 0; z-index: 0; margin: 0;
+  display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px;
+  font-size: 0.9rem; color: var(--fg-2);
+}
+.booking-status a { font-weight: 600; }
+
+@keyframes bookingFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes bookingRise { from { opacity: 0; transform: translateY(12px) scale(0.99); } to { opacity: 1; transform: none; } }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .section { padding: 64px 0; }
@@ -340,6 +389,13 @@ a { color: var(--artifact-primary); }
   .f-list summary { padding: 18px 20px; font-size: 0.94rem; }
   .f-list details p { margin: 0 20px 18px; }
   .f-cols { gap: 32px; }
+  /* Full-bleed booking sheet — a centred dialog wastes a phone screen. */
+  .booking-modal { padding: 0; }
+  .booking-dialog { max-width: none; height: 100%; border-radius: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .booking-backdrop, .booking-dialog { animation: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
