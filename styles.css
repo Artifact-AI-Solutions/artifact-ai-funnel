@@ -109,14 +109,16 @@ a { color: var(--artifact-primary); }
 
 /* ---------- Brand mark ---------- */
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--artifact-brand-navy); }
+/* TODO: placeholder mark — swap for the real Artifact AI logo asset. */
 .mark {
   width: 40px; height: 40px; border-radius: 10px; flex: none;
-  background: var(--artifact-brand-navy);
+  background: var(--gradient-primary); color: #fff;
+  font-family: var(--font-headline); font-weight: 900; font-size: 22px;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.14), 0 6px 20px rgba(0, 100, 148, 0.25);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2), 0 6px 20px rgba(0, 100, 148, 0.25);
   overflow: hidden;
 }
-.mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .word strong {
   font-family: var(--font-headline); font-weight: 900; font-size: 18px;
   color: var(--artifact-brand-navy); letter-spacing: -0.02em; display: block; line-height: 1;
