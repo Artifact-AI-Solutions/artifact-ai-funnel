@@ -259,17 +259,38 @@ body.booking-open { position: fixed; left: 0; right: 0; width: 100%; }
 /* ---------- Testimonials ---------- */
 .testimonials { background: linear-gradient(to bottom, rgba(239, 244, 250, 0.8), var(--artifact-background)); }
 .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 44px; }
-.quote-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
-.quote-card { background: var(--bg-surface); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-card); }
-.quote-card p { font-size: 0.92rem; color: #374151; margin-bottom: 20px; }
-.a-row { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; color: var(--fg-1); }
+.quote-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 34px; }
+.quote-card {
+  background: var(--bg-surface); border: 1px solid var(--border-hair);
+  border-radius: var(--radius-lg); padding: 26px 28px; box-shadow: var(--shadow-card);
+  margin: 0; display: flex; flex-direction: column; gap: 14px;
+}
+.stars { color: #f5b544; font-size: 1.05rem; letter-spacing: 0.14em; margin: 0; line-height: 1; }
+.quote-title { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.03em; margin: 0; }
+.quote-card blockquote {
+  margin: 0; padding-top: 16px; border-top: 1px solid var(--border-hair);
+  font-size: 0.95rem; color: var(--fg-2); line-height: 1.65;
+}
+.a-row {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 13px; font-weight: 700; color: var(--fg-1);
+  margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border-hair);
+}
+/* Client marks vary wildly in aspect ratio — cap both axes and let them
+   letterbox into a consistent slot rather than setting one dimension. */
+.client-logo { flex: none; width: 74px; max-height: 34px; object-fit: contain; object-position: left center; }
+/* The initials fallback occupies the same 74px slot as a logo, so names line
+   up across cards instead of stepping in and out. */
+.a-row .ava { flex: none; margin-right: 38px; }
 .ava {
   width: 36px; height: 36px; border-radius: 50%; flex: none;
   background: var(--gradient-primary); color: #fff;
   display: flex; align-items: center; justify-content: center;
   font-family: var(--font-headline); font-weight: 700; font-size: 13px;
 }
-.a-row span { display: block; font-weight: 500; font-size: 12px; color: var(--fg-3); margin-top: 2px; }
+/* Scoped to the text block on purpose — a bare `.a-row span` also matches
+   .ava and would flatten it to display:block in grey. */
+.a-row > div span { display: block; font-weight: 500; font-size: 12px; color: var(--fg-3); margin-top: 2px; }
 
 /* ---------- FAQ ---------- */
 .faq { background: linear-gradient(to bottom, var(--artifact-background), rgba(239, 244, 250, 0.85)); }
