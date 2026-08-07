@@ -1,2 +1,6 @@
 .DS_Store
 node_modules/
+
+# Full-size photo master. assets/darien.jpg is the web derivative that ships;
+# keeping the original out of the repo so it doesn't carry an unused 400KB.
+assets/Headshot.jpg
