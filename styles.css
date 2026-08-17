@@ -356,17 +356,8 @@ body.booking-open { position: fixed; left: 0; right: 0; width: 100%; }
 /* Client marks vary wildly in aspect ratio — cap both axes and let them
    letterbox into a consistent slot rather than setting one dimension. */
 .client-logo { flex: none; width: 74px; max-height: 34px; object-fit: contain; object-position: left center; }
-/* The initials fallback occupies the same 74px slot as a logo, so names line
-   up across cards instead of stepping in and out. */
-.a-row .ava { flex: none; margin-right: 38px; }
-.ava {
-  width: 36px; height: 36px; border-radius: 50%; flex: none;
-  background: var(--gradient-primary); color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-headline); font-weight: 700; font-size: 13px;
-}
-/* Scoped to the text block on purpose — a bare `.a-row span` also matches
-   .ava and would flatten it to display:block in grey. */
+/* Scoped to the text block on purpose — a bare `.a-row span` would also match
+   any avatar/badge span dropped in here and flatten it to display:block. */
 .a-row > div span { display: block; font-weight: 500; font-size: 12px; color: var(--fg-3); margin-top: 2px; }
 
 /* ---------- FAQ ---------- */
