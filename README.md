@@ -9,28 +9,21 @@ Preview it locally:
 python -m http.server 4173 --directory .
 ```
 
-## Adding the hero video
+## The hero video
 
-The hero currently shows a placeholder frame. To swap in the real VSL:
+Live at `videos/hero-vsl.mp4`, 4:34, with `assets/hero-poster.jpg` as the poster. Built in
+[echo-video](https://github.com/Artifact-AI-Solutions/echo-video) on branch
+`vsl/fill-dead-air`, composition `HeroVSL`.
 
-1. Put the file at `videos/hero.mp4` (transcode it first — see below).
-2. In `index.html`, replace the block marked `<!-- TODO: swap this placeholder for the hero VSL -->` with:
-
-```html
-<div class="video-frame">
-  <video controls preload="metadata" playsinline poster="assets/hero-poster.jpg">
-    <source src="videos/hero.mp4" type="video/mp4" />
-    Your browser doesn't support embedded video.
-  </video>
-</div>
-```
-
-A `poster` image is worth adding — without one the player shows a black rectangle until
-the first frame decodes, which is the first thing a visitor sees. Grab one with:
+To replace it, transcode the new export (settings below), drop it at the same path, and
+regenerate the poster:
 
 ```bash
-ffmpeg -ss 3 -i videos/hero.mp4 -frames:v 1 -q:v 3 assets/hero-poster.jpg
+ffmpeg -ss 30 -i videos/hero-vsl.mp4 -frames:v 1 -q:v 3 assets/hero-poster.jpg
 ```
+
+The poster matters. Without one the player shows a black rectangle until the first frame
+decodes, and that rectangle is the first thing a visitor sees.
 
 ## Transcoding video before committing
 
