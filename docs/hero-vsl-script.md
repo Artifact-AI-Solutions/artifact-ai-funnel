@@ -14,17 +14,19 @@ after-hours call you have, with permission to use it.
 ## What is actually built
 
 `Artifact-AI-Solutions/echo-video`, branch `vsl/fill-dead-air`, composition `HeroVSL`.
-Runtime 4:20. Timings below are the real ones, taken from the transcript rather than
+Runtime 4:38. Timings are the real ones, measured from the transcript rather than
 estimated.
 
 | time | picture | source |
 | --- | --- | --- |
-| 0:00 – 0:24 | cold open, waveform and the 11:47 PM reveal | `VSL-ColdOpen` |
-| 0:24 – 0:42 | Darien to camera | export footage |
-| 0:42 – 0:57 | van B-roll, with the call-log card at 0:50 | export + `VSL-StatCallLog` |
-| 0:57 – 3:32 | the call, 155s, capture panel filling 9 of 9 | `CallTranscript` |
+| 0:00 – 0:24 | cold open, waveform driven by the real call audio, then the 11:47 PM reveal | `VSL-ColdOpen` |
+| 0:24 – 0:42 | Darien to camera, raw clip C0184, graded | raw + `VSL-LowerThird` |
+| 0:42 – 0:57 | van at 4x slow, desk and phone, desk detail | raw B-roll + `VSL-StatCallLog` |
+| 0:57 – 3:32 | the call, 155s, capture panel filling 9 of 9, caller details redacted | `CallTranscript` |
 | 3:32 – 4:11 | the three questions | `VSL-Objections` |
-| 4:11 – 4:20 | the close | `VSL-Close` |
+| 4:11 – 4:27 | the close, on camera | raw C0185 take 3 |
+| 4:27 – 4:34 | "Book a call now" over the card | `VSL-Close` |
+| 4:34 – 4:38 | company mark | `LogoOutro` |
 
 ---
 
@@ -145,7 +147,7 @@ instead of skepticism. Shorter sales cycle.
 
 **Screen:** Darien on camera. Booking calendar visible behind or beside him.
 
-> If you want to know what your phone is costing you, book a call. Thirty minutes.
+> If you want to know what your phone is costing you, book a call. Ten minutes.
 > We'll look at your call volume together and I'll tell you straight whether Echo would
 > catch enough to be worth paying for.
 >
@@ -182,16 +184,14 @@ that answers "does it actually sound like a person".
 
 ## Open items
 
-- **The close has no voiceover.** It is the one section never recorded. The audio bed ends
-  around 4:11 and the card currently plays silent to 4:20. The words are in the Close
-  section above, roughly fifteen seconds of read.
-- **The lower third is burned into the export.** Plain white text over a bright pool,
-  crossing his hands. It cannot be replaced without the raw intro clip. `VSL-LowerThird`
-  is built and waiting for that clip.
-- **Sarah vs Grace.** The recording says Grace. The `SarahHero` composition in echo-video
-  says Sarah. One of them is wrong on a customer-facing asset.
+- **Agent names are per client.** Grace is JD's Prompt's agent, which is why she is named
+  in the recording. `SarahHero` in echo-video is a different client's. Neither is wrong,
+  but marketing has to make the naming sound deliberate rather than like one product with
+  two names.
 - **Three accent colours** across the repo: `#006494` on the funnel and the VSL scenes,
   `#0284c7` in `sarah/tokens.ts`, amber `#FFB000` in `kinetic/tokens.ts`.
 - **BTAC ticket value is unconfirmed.** The anti-slop rules say $600+, `artifact-ai-os/CLAUDE.md`
   says $400. Confirm before recording, then fix it in both places so this does not
   resurface.
+- **The GHL calendar still books 30 minutes.** The call is ten. Change the event duration
+  on `link.infinitygm.no` or the page and the booking disagree the moment someone clicks.
