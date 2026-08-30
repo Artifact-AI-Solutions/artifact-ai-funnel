@@ -1,10 +1,30 @@
 # Hero VSL script
 
-Target length: 3:00 to 3:30. Structure follows a demo call, because a demo call converts
-by letting the owner hear the thing work before anyone asks them for anything.
+**No target length.** An earlier version of this doc capped it at 3:00 to 3:30, which was
+wrong. The recorded call runs 2 minutes 35 seconds and the length is the argument: nobody
+believes an AI holds a real conversation until they have sat through one. Cutting it to
+hit a number would remove the only thing on the page that cannot be argued with.
+
+Structure follows a demo call, because a demo call converts by letting the owner hear the
+thing work before anyone asks them for anything.
 
 The recorded call is the asset. Everything else is framing around it. Pick the best real
 after-hours call you have, with permission to use it.
+
+## What is actually built
+
+`Artifact-AI-Solutions/echo-video`, branch `vsl/fill-dead-air`, composition `HeroVSL`.
+Runtime 4:20. Timings below are the real ones, taken from the transcript rather than
+estimated.
+
+| time | picture | source |
+| --- | --- | --- |
+| 0:00 – 0:24 | cold open, waveform and the 11:47 PM reveal | `VSL-ColdOpen` |
+| 0:24 – 0:42 | Darien to camera | export footage |
+| 0:42 – 0:57 | van B-roll, with the call-log card at 0:50 | export + `VSL-StatCallLog` |
+| 0:57 – 3:32 | the call, 155s, capture panel filling 9 of 9 | `CallTranscript` |
+| 3:32 – 4:11 | the three questions | `VSL-Objections` |
+| 4:11 – 4:20 | the close | `VSL-Close` |
 
 ---
 
@@ -136,18 +156,16 @@ trust signal available, and it filters out the calls you did not want anyway.
 
 ---
 
-## The 90-second cut
+## On length
 
-If the hero stays at 90 seconds, keep these and drop the rest:
+This doc used to carry a 90-second cut. It is gone, because the length cap it existed to
+serve is gone.
 
-- 0:00 to 0:15 cold open, unchanged. Non-negotiable.
-- 0:35 to 0:50 the problem and the call-log test.
-- A 35 second edit of the call, trimmed to the booking moment.
-- 2:00 to 2:15 the job appearing on the board.
-- The close, tightened to two sentences.
-
-Cut the objections section first. It is the most valuable part to keep in the long version
-and the least damaging to lose in the short one, because the FAQ on the page covers it.
+If a short version is ever needed for an ad, cut a separate asset from the same footage
+rather than shortening this one. A 90-second edit and a hero VSL are different jobs: the
+short one buys a click, this one has to survive a skeptical owner watching the whole
+thing before booking. Trimming the call to fit an ad length would gut the only section
+that answers "does it actually sound like a person".
 
 ---
 
@@ -164,6 +182,16 @@ and the least damaging to lose in the short one, because the FAQ on the page cov
 
 ## Open items
 
+- **The close has no voiceover.** It is the one section never recorded. The audio bed ends
+  around 4:11 and the card currently plays silent to 4:20. The words are in the Close
+  section above, roughly fifteen seconds of read.
+- **The lower third is burned into the export.** Plain white text over a bright pool,
+  crossing his hands. It cannot be replaced without the raw intro clip. `VSL-LowerThird`
+  is built and waiting for that clip.
+- **Sarah vs Grace.** The recording says Grace. The `SarahHero` composition in echo-video
+  says Sarah. One of them is wrong on a customer-facing asset.
+- **Three accent colours** across the repo: `#006494` on the funnel and the VSL scenes,
+  `#0284c7` in `sarah/tokens.ts`, amber `#FFB000` in `kinetic/tokens.ts`.
 - **BTAC ticket value is unconfirmed.** The anti-slop rules say $600+, `artifact-ai-os/CLAUDE.md`
   says $400. Confirm before recording, then fix it in both places so this does not
   resurface.
